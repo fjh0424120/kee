@@ -5,3 +5,5 @@
 from amzqr.terminal import main
 
 main()
+#hihi
+print("hihihihi")
