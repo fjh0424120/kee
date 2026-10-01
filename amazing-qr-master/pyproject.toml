@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "amzqr"
+dynamic = ["version"]
+description = "Generator for amazing QR Codes. Including Common, Artistic and Animated QR Codes."
+keywords = ["qr", "qrcode", "amazing", "artistic", "animated", "gif", "colorized"]
+license = { text = "GPLv3" }
+authors = [{ name = "x.hw", email = "xhw.xu@outlook.com" }]
+requires-python = ">=3.8"
+readme = "README.md"
+dependencies = [
+    "Pillow>=8.0.0,<12",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: Microsoft :: Windows",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+]
+
+[project.urls]
+Homepage = "https://github.com/x-hw/amazing-qr"
+Download = "https://github.com/x-hw/amazing-qr"
+"Bug Tracker" = "https://github.com/x-hw/amazing-qr/issues"
+
+[project.scripts]
+amzqr = "amzqr.terminal:main"
+
+[tool.setuptools]
+packages = ["amzqr", "amzqr.mylibs"]
+# Keep METADATA at version 2.1: do not let setuptools auto-inject
+# a License-File (that field requires metadata 2.4) — GPLv3 is declared as text.
+license-files = []
+
+[tool.setuptools.dynamic]
+version = { attr = "amzqr.__version__.__version__" }
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "pytest-benchmark",
+    "ruff",
+]
+
+[tool.ruff]
+target-version = "py38"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["F", "E9", "I"]
+ignore = []
+
+[tool.ruff.format]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
